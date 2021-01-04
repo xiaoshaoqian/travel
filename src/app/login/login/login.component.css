@@ -1,0 +1,38 @@
+nz-header{
+    background: #eff3f5;
+    }
+    nz-content {
+    background: rgb(178, 203, 221);
+    color: #fff;
+    min-height: 432px;
+    line-height: 120px;
+    align-items: center;
+    
+
+    }
+    nz-footer {
+    background: #7dbcea;
+    color: #fff;
+    text-align: center;
+    line-height: 1.5;
+    }
+    nz-layout {
+    margin-bottom: 48px;
+    }
+
+    nz-layout:last-child {
+    margin: 0;
+    }
+
+    .logo {
+    float: left;
+    margin-top: 7px;
+    width: 64px;
+    height: 50px;
+    /* background-image: url("../../../../assets/images/common/logo.png"); */
+    }
+    .login-form {
+    margin-right: 180px;
+    margin-top: 120px;
+    float: right;
+    }

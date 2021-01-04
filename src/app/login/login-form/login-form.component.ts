@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SafeUrl } from '@angular/platform-browser';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,8 +16,8 @@ export class LoginFormComponent implements OnInit {
   validateForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
-    private santinizer: DomSanitizer
+    private authService: AuthService,
+    // private santinizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -34,14 +37,13 @@ export class LoginFormComponent implements OnInit {
     }
 
     var param = {
-      username: this.validateForm.get('userName').value,
-      password: this.validateForm.get('password').value,
-      code: this.validateForm.get('captcha').value,
+      username: this.validateForm.get('userName')?.value,
+      password: this.validateForm.get('password')?.value,
+      code: this.validateForm.get('captcha')?.value,
       uuid: this.captchaUuid
-
     };
 
-    this.loginService.login(param).subscribe(res => {
+    this.authService.login(param).subscribe(res => {
       if (res == null) {
         alert('ff')
       } else {
@@ -52,8 +54,8 @@ export class LoginFormComponent implements OnInit {
 
   getCaptcha(): void {
     this.imgSpinning = true;
-    this.loginService.getCaptcha().subscribe(res => {
-      this.validateForm.get('captcha').setValue('');
+    this.authService.getCaptcha().subscribe(res => {
+      this.validateForm.get('captcha')?.setValue('');
       //this.captchaSrc = this.santinizer.bypassSecurityTrustUrl(window.URL.createObjectURL(res.data.captchaCode));
       this.captchaSrc = res.data.captchaCode;
       this.captchaUuid = res.data.captchaGUID;

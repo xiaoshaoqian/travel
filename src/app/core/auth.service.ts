@@ -4,8 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { UserService } from './user.service';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { AuthResult, AuthToken } from './model/authModel';
-import { User } from './model/user';
+// import { AuthResult, AuthToken } from './model/authModel';
+// import { User } from './model/user';
 import { ApiRes } from '../share/model/api-res';
 // import { I18n } from '@ngx-translate/i18n-polyfill';
 
