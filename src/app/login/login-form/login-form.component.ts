@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private router: Router,
     // private santinizer: DomSanitizer
   ) { }
 
@@ -47,7 +49,9 @@ export class LoginFormComponent implements OnInit {
       if (res == null) {
         alert('ff')
       } else {
-        alert('dd')
+      setTimeout(() => {
+        return this.router.navigateByUrl('/pages/layout');
+      }, 500);
       }
     })
   }
