@@ -50,7 +50,7 @@ export class LoginFormComponent implements OnInit {
         alert('ff')
       } else {
       setTimeout(() => {
-        return this.router.navigateByUrl('/pages/layout');
+        return this.router.navigateByUrl('/pages/dashboard');
       }, 500);
       }
     })

@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
+import { NgZorroAntdModule } from '../share/ng-zorro-antd.module';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LayoutComponent],
   imports: [
     CommonModule,
+    NgZorroAntdModule,
     PagesRoutingModule
   ]
 })

@@ -1,0 +1,156 @@
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon nzType="file"></i>
+        <a routerLink="/pages/dashboard">首页</a>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''" nzSelected>
+        <i nz-icon nzType="mail"></i>
+        <a routerLink="/pages/dashboard">首页</a>
+      </li>
+      <li nz-submenu nzTitle="用户管理" nzIcon="user">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/users/user-list">用户列表</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/users/role">角色定义</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/users/role-authorization">角色权限</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/users/user-role">用户角色</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="系统管理" nzIcon="file">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/menu-manage">菜单管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/authorization">权限定义</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/dictionary">字典定义</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/system-log">系统日志</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/online-statistic">在线统计</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/pages/system/task-scheduler">任务调度</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
+    </nz-header>
+
+    <nz-content>
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+
+    <nz-footer>xiaoshaoqian Design ©2020</nz-footer>
+  </nz-layout>
+</nz-layout>
+<!-- <nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="https://ng.ant.design/" target="_blank">
+          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+          <h1>Ant Design Of Angular</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu  nzTitle="首页" nzIcon="dashboard">
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="dashboard"></i>
+          <span>首页</span>
+        </li>
+        <li nz-submenu  nzTitle="用户管理" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/users/">用户列表</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/users/">角色定义</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/users/">角色权限</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/users/">用户角色</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="系统管理" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/menu">菜单管理</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/">权限定义</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/">字典定义</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/">系统日志</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/">在线统计</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/system/">任务调度</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a>Basic Form</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+          </span>
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+   -->
