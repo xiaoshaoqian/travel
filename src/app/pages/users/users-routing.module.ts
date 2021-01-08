@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RoleAuthorizationComponent } from './role-authorization/role-authorization.component';
-import { RoleComponent } from './role/role.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserRoleComponent } from './user-role/user-role.component';
 
 const routes: Routes = [
   {
-    path:'role',component:RoleComponent
+    path:'role',loadChildren:() => import('./role/role.module').then(m=>m.RoleModule),
   },
   {
-    path:'role-authorization',component:RoleAuthorizationComponent
+    path:'role-authorization',loadChildren:()=>import('./role-authorization/role-authorization-routing.module').then(m=>m.RoleAuthorizationRoutingModule)
   },
   {
-    path:'user-list',component:UserListComponent
+    path:'user-list',loadChildren:()=>import('./user-list/user-list.module').then(m=>m.UserListModule)
   },
   {
-    path:'user-role',component:UserRoleComponent
+    path:'user-role',loadChildren:()=>import('./user-role/user-role.module').then(m=>m.UserRoleModule)
   },
 ];
 
