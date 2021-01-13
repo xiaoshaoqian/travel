@@ -40,73 +40,73 @@
     </tbody>
   </nz-table> -->
 
-  <div nz-row class="content">
-    <div class="title" i18n>用户列表</div>
-    <hr class="hr">
-    <div class="operation">
-      <div class="left" style="float:left">
-          <button nz-button nzType="primary" (click)="create()" >
-              <i class="anticon anticon-plus"  id="btn-icon">
-              </i><span i18n>新建</span>
-          </button>
+<div nz-row class="content">
+  <div class="title" i18n>用户列表</div>
+  <hr class="hr">
+  <div class="operation">
+    <div class="left" style="float:left">
+        <button nz-button nzType="primary" (click)="create()" >
+            <i class="anticon anticon-plus"  id="btn-icon">
+            </i><span i18n>新建</span>
+        </button>
 
-      </div>
-      <div class="right" style="float:right">
-        <nz-input-group [nzSuffix]="suffixIconSearch"   style ='width: 256px'>
-          <!-- <input type="text" nz-input [(ngModel)]="searchcondition" [placeholder]="placeholder" (keyup.enter)="LoadData(true)"> -->
-        </nz-input-group>
-        <ng-template #suffixIconSearch>
-          <i class="anticon anticon-search" (click)='LoadData(true)'></i>
-        </ng-template>
-      </div>
     </div>
-    <div style="clear: both"></div>
-    <div class="table">
-      <nz-table #basicTable [nzData]="source" [nzTotal]="total" [(nzPageIndex)]="pageIndex"
-                [nzShowTotal]="totalTemplate" [(nzPageSize)]="pageSize"  [nzShowQuickJumper]='true'
-                [nzSize]="'middle'" [nzFrontPagination]='false' (nzPageIndexChange)="refreshStatus()"
-                [nzNoResult]="noResult"
-                [nzScroll]="{x:'100%',y:'calc(100vh - 335.8px)'}">
-        <thead>
-          <tr>
-            <th>用户账号</th>
-            <th>用户名称</th>
-            <th>手机号码</th>
-            <th>性别</th>
-            <th>创建时间</th>
-            <th>是否启用</th>
-            <th>备注</th>
-  
-              <th class='div-th' nzWidth="50px" nzRight="0px" i18n>操作</th>
-          </tr>
-
-        </thead>
-        <tbody>
-        <tr *ngFor="let data of basicTable.data;index as i" >
-          <td  nzWidth="50px">{{data.MenuCode}}</td>
-          <td  nzWidth="50px">{{data.MenuName}}</td>
-          <td  nzWidth="50px">{{data.ParentCode}}</td>
-          <td  nzWidth="80px">{{data.URL}}</td>
-          <td  nzWidth="50px">{{data.IconCss}}</td>
-          <td  nzWidth="50px">{{data.Order}}</td>
-          <td  nzWidth="50px">{{data.Desc}}</td>
-          <td class="btn-group" nzWidth="50px" nzRight="0px">
-            <a>
-              <!-- <i class="fhjf-icon fhjf-icon-edit-square" id="btn-icon" (click)="onEdit(data)" [nzTitle]="editString" nzPlacement="top" nz-tooltip></i>
-              <i class="fhjf-icon fhjf-icon-delete"  id="btn-icon" style ="margin-left:8px;" (click)="onDeleteConfirm(data)" [nzTitle]="deleteString" nzPlacement="top" nz-tooltip></i> -->
-            </a>
-          </td>
-        </tr>
-        </tbody>
-        <ng-template #noResult>
-          <!-- <app-no-result tipText="没有数据" i18n-tipText></app-no-result> -->
-        </ng-template>
-        <ng-template #totalTemplate let-total>
-            总数为 {{total}} 条
-        </ng-template>
-      </nz-table>
+    <div class="right" style="float:right">
+      <nz-input-group [nzSuffix]="suffixIconSearch"   style ='width: 256px'>
+        <!-- <input type="text" nz-input [(ngModel)]="searchcondition" [placeholder]="placeholder" (keyup.enter)="LoadData(true)"> -->
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i class="anticon anticon-search" (click)='LoadData(true)'></i>
+      </ng-template>
     </div>
   </div>
+  <div style="clear: both"></div>
+  <div class="table">
+    <nz-table #basicTable [nzData]="source" [nzTotal]="total" [(nzPageIndex)]="pageIndex"
+              [nzShowTotal]="totalTemplate" [(nzPageSize)]="pageSize"  [nzShowQuickJumper]='true'
+              [nzSize]="'middle'" [nzFrontPagination]='false' (nzPageIndexChange)="refreshStatus()"
+              [nzNoResult]="noResult"
+              [nzScroll]="{x:'100%',y:'calc(100vh - 335.8px)'}">
+      <thead>
+        <tr>
+          <th>用户账号</th>
+          <th>用户名称</th>
+          <th>手机号码</th>
+          <th>性别</th>
+          <th>创建时间</th>
+          <th>是否启用</th>
+          <th>备注</th>
+
+            <th class='div-th' nzWidth="50px" nzRight="0px" i18n>操作</th>
+        </tr>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data;index as i" >
+        <td  nzWidth="50px">{{data.MenuCode}}</td>
+        <td  nzWidth="50px">{{data.MenuName}}</td>
+        <td  nzWidth="50px">{{data.ParentCode}}</td>
+        <td  nzWidth="80px">{{data.URL}}</td>
+        <td  nzWidth="50px">{{data.IconCss}}</td>
+        <td  nzWidth="50px">{{data.Order}}</td>
+        <td  nzWidth="50px">{{data.Desc}}</td>
+        <td class="btn-group" nzWidth="50px" nzRight="0px">
+          <a>
+            <!-- <i class="fhjf-icon fhjf-icon-edit-square" id="btn-icon" (click)="onEdit(data)" [nzTitle]="editString" nzPlacement="top" nz-tooltip></i>
+            <i class="fhjf-icon fhjf-icon-delete"  id="btn-icon" style ="margin-left:8px;" (click)="onDeleteConfirm(data)" [nzTitle]="deleteString" nzPlacement="top" nz-tooltip></i> -->
+          </a>
+        </td>
+      </tr>
+      </tbody>
+      <ng-template #noResult>
+        <!-- <app-no-result tipText="没有数据" i18n-tipText></app-no-result> -->
+      </ng-template>
+      <ng-template #totalTemplate let-total>
+          总数为 {{total}} 条
+      </ng-template>
+    </nz-table>
+  </div>
+</div>
   
   
   <!-- <app-menuform [isVisible]="isformVisible" [modalTitle]='formmodalTitle' [modalData]='formdata' (cancel)="onCancelform()"></app-menuform> -->

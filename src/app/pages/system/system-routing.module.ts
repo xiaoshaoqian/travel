@@ -1,30 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthorizationComponent } from './authorization/authorization.component';
-import { DictionaryComponent } from './dictionary/dictionary.component';
-import { MenuManageComponent } from './menu-manage/menu-manage.component';
-import { OnlineStatisticComponent } from './online-statistic/online-statistic.component';
-import { SystemLogComponent } from './system-log/system-log.component';
-import { TaskSchedulerComponent } from './task-scheduler/task-scheduler.component';
 
 const routes: Routes = [
   {
-    path:'authorization',component:AuthorizationComponent
+    path:'authorization', loadChildren: () => import('./authorization/authorization.module').then(m => m.AuthorizationModule)
   },
   {
-    path:'dictionary',component:DictionaryComponent
+    path:'dictionary',loadChildren: () => import('./dictionary/dictionary.module').then(m => m.DictionaryModule)
   },
   {
-    path:'menu-manage',component:MenuManageComponent
+    path:'menu-manage',loadChildren: () => import('./menu-manage/menu-manage.module').then(m => m.MenuManageModule)
   },
   {
-    path:'online-statistic',component:OnlineStatisticComponent
+    path:'online-statistic',loadChildren: () => import('./online-statistic/online-statistic.module').then(m => m.OnlineStatisticModule)
   },
   {
-    path:'system-log',component:SystemLogComponent
+    path:'system-log',loadChildren: () => import('./system-log/system-log.module').then(m => m.SystemLogModule)
   },
   {
-    path:'task-scheduler',component:TaskSchedulerComponent
+    path:'task-scheduler',loadChildren: () => import('./authorization/authorization.module').then(m => m.AuthorizationModule)
   }
 ];
 

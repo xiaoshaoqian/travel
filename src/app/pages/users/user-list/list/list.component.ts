@@ -43,23 +43,36 @@ export class ListComponent implements OnInit {
     if (reset) {
       this.pageIndex = 1;
     }
-    let olist = [];
+    let olist: never[] = [];
     const pageConfig = '&PageNumber=' + this.pageIndex + '&PageSize=' + this.pageSize;
     const body = 'SearchName=' + this.searchcondition;
-    this.http.get('/api/Menu/GetDataMenu?' + body + pageConfig + '&_t=' + new Date().getTime()).subscribe(data => {
-      olist = this.convertData(data['list'].List);
+    this.http.get('/api/Users/Query?' + body + pageConfig + '&_t=' + new Date().getTime()).subscribe(data => {
+      // olist = this.data['list'].List);
       this.source = olist;
-      this.total = data['list'].TotalCount;
+      this.total = 12;
     });
   }
+  // LoadData(reset: boolean = false) {
+  //   if (reset) {
+  //     this.pageIndex = 1;
+  //   }
+  //   let olist = [];
+  //   const pageConfig = '&PageNumber=' + this.pageIndex + '&PageSize=' + this.pageSize;
+  //   const body = 'SearchName=' + this.searchcondition;
+  //   this.http.get('/api/Users/Query?' + body + pageConfig + '&_t=' + new Date().getTime()).subscribe(data => {
+  //     olist = this.convertData(data['list'].List);
+  //     this.source = olist;
+  //     this.total = data['list'].TotalCount;
+  //   });
+  // }
   // 转换创建日期和修改时间的时间格式
-  convertData(list: any) {
-    for (let i = 0; i < list.length; i++) {
-      list[i].CreatedDateTime = this.datePipe.transform(list[i].CreatedDateTime, 'yyyy-MM-dd HH:mm:ss');
-      list[i].ModifiedDateTime = this.datePipe.transform(list[i].ModifiedDateTime, 'yyyy-MM-dd HH:mm:ss');
-    }
-    return list;
-  }
+  // convertData(list: any) {
+  //   for (let i = 0; i < list.length; i++) {
+  //     list[i].CreatedDateTime = this.datePipe.transform(list[i].CreatedDateTime, 'yyyy-MM-dd HH:mm:ss');
+  //     list[i].ModifiedDateTime = this.datePipe.transform(list[i].ModifiedDateTime, 'yyyy-MM-dd HH:mm:ss');
+  //   }
+  //   return list;
+  // }
 
   // 新增
   create() {
@@ -78,47 +91,47 @@ export class ListComponent implements OnInit {
   }
 
   // 编辑
-  onEdit(menudata): void {
-    this.formmodalTitle = '菜单管理';
-    this.showFormModal(menudata);
-  }
+  // onEdit(menudata): void {
+  //   this.formmodalTitle = '菜单管理';
+  //   this.showFormModal(menudata);
+  // }
 
   // 确定删除
-  onDeleteConfirm(data): void {
-    this.showTipsModal(data);
-  }
+  // onDeleteConfirm(data): void {
+  //   this.showTipsModal(data);
+  // }
 
-  showTipsModal(data) {
-    const self = this;
-    this.modalService.confirm({
-      nzTitle: '提示',
-      nzContent: '是否确认删除?',
-      nzOnOk: () => {
-        self.delete(data);
-      },
-      nzOnCancel: () => {
-      }
-    });
-  }
+  // showTipsModal(data) {
+  //   const self = this;
+  //   this.modalService.confirm({
+  //     nzTitle: '提示',
+  //     nzContent: '是否确认删除?',
+  //     nzOnOk: () => {
+  //       self.delete(data);
+  //     },
+  //     nzOnCancel: () => {
+  //     }
+  //   });
+  // }
 
   // 将需要删除的数据通过HttpPost方法传到api进行删除
-  delete(menudata: any) {
-    const menu = {
-      'id': menudata.Id, 'MenuCode': menudata.MenuCode, 'MenuName': menudata.MenuName, 'ParentCode': menudata.ParentCode,
-      'Order': menudata.Order, 'URL': menudata.URL, 'IconURL': menudata.IconURL, 'IconCss': menudata.IconCss, 'Desc': menudata.Desc,
-      'IsActived': null, 'ModifiedDateTime': menudata.ModifiedDateTime, 'CreatedDateTime': menudata.CreatedDateTime,
-      'CreatedUser': menudata.CreatedUser, 'ModifiedUser': menudata.ModifiedUser
-    };
-    this.http.post('/api/Menu/Delete', menu).subscribe(
-      data => {
-        if (data === null) {
-          this.message.success('删除成功');
-          this.LoadData();
-        }
-      },
-      // erro => { console.log(error); }
-    );
-  }
+  // delete(menudata: any) {
+  //   const menu = {
+  //     'id': menudata.Id, 'MenuCode': menudata.MenuCode, 'MenuName': menudata.MenuName, 'ParentCode': menudata.ParentCode,
+  //     'Order': menudata.Order, 'URL': menudata.URL, 'IconURL': menudata.IconURL, 'IconCss': menudata.IconCss, 'Desc': menudata.Desc,
+  //     'IsActived': null, 'ModifiedDateTime': menudata.ModifiedDateTime, 'CreatedDateTime': menudata.CreatedDateTime,
+  //     'CreatedUser': menudata.CreatedUser, 'ModifiedUser': menudata.ModifiedUser
+  //   };
+  //   this.http.post('/api/Menu/Delete', menu).subscribe(
+  //     data => {
+  //       if (data === null) {
+  //         this.message.success('删除成功');
+  //         this.LoadData();
+  //       }
+  //     },
+  //     // erro => { console.log(error); }
+  //   );
+  // }
 
   // 关闭当前页
   onCancelform() {

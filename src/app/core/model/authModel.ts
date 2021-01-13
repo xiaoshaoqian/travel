@@ -12,7 +12,7 @@ export class AuthResult {
     redirect?: any,
     errors?: any,
     messages?: any,
-    // token?: AuthToken
+    token?: AuthToken
   ) {
     this.success = success;
     this.response = response;
@@ -27,20 +27,20 @@ export class AuthResult {
     if ((this.messages = this.messages)) {
       this.messages = messages;
     }
-    // this.token = token;
+    this.token = token;
   }
 
   getResponse(): any {
     return this.response;
   }
 
-  // getTokenValue(): AuthToken {
-  //   return this.token;
-  // }
+  getTokenValue(): AuthToken {
+    return this.token;
+  }
 
-  // replaceToken(token: AuthToken): void {
-  //   this.token = token;
-  // }
+  replaceToken(token: AuthToken): void {
+    this.token = token;
+  }
 
   getRedirect(): any {
     return this.redirect;
@@ -67,17 +67,17 @@ export class AuthResult {
   }
 }
 
-// export class AuthToken {
-//   token: string;
-//   public setValue(token: string) {
-//     this.token = token;
-//   }
+export class AuthToken {
+  token!: string;
+  public setValue(token: string) {
+    this.token = token;
+  }
 
-//   /**
-//    * Returns the token value
-//    * @returns string
-//    */
-//   public getValue(): string {
-//     return this.token;
-//   }
-// }
+  /**
+   * Returns the token value
+   * @returns string
+   */
+  public getValue(): string {
+    return this.token;
+  }
+}
