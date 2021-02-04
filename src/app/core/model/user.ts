@@ -37,3 +37,20 @@ export class SimpleUser {
     public region: any
   ) { }
 }
+
+export interface User{
+  nickname: string,
+  email: string,
+  phone: string,
+  id: string,
+  Ip: string,
+  province: string,
+  department: any,
+  region: any
+}
+
+export interface ApplicationUser {
+  username: string;
+  role: string;
+  originalUserName: string;
+}

@@ -1,13 +1,17 @@
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { empty, Observable, of } from 'rxjs';
 import { AuthToken } from './model/authModel';
 
 @Injectable()
 export class TokenService {
 
-  constructor() { }
-
   token: AuthToken;
+  constructor() { 
+    this.token = new AuthToken;
+  }
+
+  
 
   get(): Observable<any> {
     this.restoreTokenFromCookie();
@@ -28,7 +32,7 @@ export class TokenService {
     if (rememberMe) {
       localStorage['Auth_Token'] = JSON.stringify(token);
     } else {
-      localStorage.setItem('Auth_Token', null);
+      localStorage.setItem('Auth_Token', '');
       localStorage.removeItem('Auth_Token');
     }
   }
@@ -44,15 +48,15 @@ export class TokenService {
   }
 
   clearToken() {
-    this.token = null;
-    localStorage.setItem('Auth_Token', null);
+    this.token = new AuthToken();
+    localStorage.setItem('Auth_Token', '');
     localStorage.removeItem('Auth_Token');
-    localStorage.setItem('Online_Date', null);
+    localStorage.setItem('Online_Date','');
     localStorage.removeItem('Online_Date');
   }
   // 验证时间是否在2小时内,若不在则清空token后跳到login页面,若在则替换Online_Date时间
   checkDateAuth() {
-    const date = JSON.parse(localStorage.getItem('Online_Date'));
+    const date =JSON.parse(localStorage.getItem('Online_Date')!);
     if (date !== null && date !== undefined) {
       const onlinetime = date.kkips;
       const currenttime = new Date().getTime();
@@ -69,12 +73,12 @@ export class TokenService {
   }
   // 跳转到login页面
   tologinUrl() {
-    let loginurl = 'https://www.fiberhome.work';
-    if (location.pathname.startsWith('/app/zh')) {
-      loginurl = loginurl + '/applogin/zh/login';
-    } else if (location.pathname.startsWith('/app/en')) {
-      loginurl = loginurl + '/applogin/en/login';
-    }
+    let loginurl = 'http://127.0.0.1';
+    // if (location.pathname.startsWith('/app/zh')) {
+    //   loginurl = loginurl + '/applogin/zh/login';
+    // } else if (location.pathname.startsWith('/app/en')) {
+    //   loginurl = loginurl + '/applogin/en/login';
+    // }
     window.location.href = loginurl;
   }
 }

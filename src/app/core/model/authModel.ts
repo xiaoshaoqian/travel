@@ -68,7 +68,10 @@ export class AuthResult {
 }
 
 export class AuthToken {
-  token!: string;
+  token: string;
+  constructor(){
+    this.token = '';
+  }
   public setValue(token: string) {
     this.token = token;
   }
